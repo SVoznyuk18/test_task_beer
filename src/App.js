@@ -3,16 +3,13 @@ import { shallow } from "zustand/shallow";
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
 import { useRecipes } from "./store";
-import './App.css';
-
-import Main from "./Main";
-import Recipe from './Recipe';
+import Main from "./pages/Main/Main";
+import Recipe from './pages/Recipe/Recipe';
 
 function App() {
   const { recipes, getAllBeers, deleteRecipe, incAmountPage } = useRecipes(
     (state) => ({
       recipes: state.recipes,
-      // errors: state.errors,
       amountPages: state.amountPages,
       getAllBeers: state.getAllBeers,
       deleteRecipe: state.deleteRecipe,
@@ -39,8 +36,6 @@ function App() {
           <Route path="/recipe/:id" element={<Recipe recipes={recipes}/>}/>
         </Routes>
       </BrowserRouter>
-      
-      
     </div>
   );
 }

@@ -1,0 +1,11 @@
+.recipesList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.recipesList a {
+  text-decoration: none;
+  color: black;
+}
