@@ -19,9 +19,10 @@ function App() {
   );
 
   useEffect(() => {
-    getRecipes();
+    getRecipes(); //get recipes
   }, []);
 
+  //increace amout page after that get another 25 recipes
   useEffect(() => {
     if (recipes.length !== 0 && recipes.length < 15) {
       incAmountPage();
