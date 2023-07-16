@@ -5,7 +5,7 @@ export const useRecipes = create(devtools((set, get) => ({
   errors: null,
   slectRecipes: [],
   amountPages: 1,
-  getRecipes: async () => {
+  getRecipes: async () => {  //get recipes
     try {
       const page = get().amountPages;
       const recipes = get().recipes;
@@ -19,13 +19,13 @@ export const useRecipes = create(devtools((set, get) => ({
       set({ errors: error.message });
     }
   },
-  deleteRecipe: (filteredRecipes) => {
+  deleteRecipe: (filteredRecipes) => { //delete recipes
     set({recipes: filteredRecipes})
   },
-  incAmountPage: () => {
+  incAmountPage: () => {  //increace amount page
     const currentPage = get().amountPages;
     const getRecipes = get().getRecipes;
     set({amountPages: currentPage + 1});
-    getRecipes();
+    getRecipes();  //we increace amount page and get new 25 recipes
   }
 })));
