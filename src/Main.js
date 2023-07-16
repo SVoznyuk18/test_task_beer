@@ -25,12 +25,14 @@ const Main = ({recipes, deleteRecipe}) => {
     setSelectedRecipes([]);
   }
 
+  const filteredRecipes = recipes.slice(0, 15);
+
   return (
     <main>
       <Button onClick={() => hanndleDelete(recipes, selectedRecipes)} isShow={!!selectedRecipes.length}/>
       <ul className="recipesList">
         {
-          recipes && recipes.map((recipe) => (
+          filteredRecipes && filteredRecipes.map((recipe) => (
             <li 
               className={`recipeCard ${selectedRecipes.includes(recipe?.id) ? 'recipeCard_active' : ''}`}
               key={recipe?.id} 

@@ -4,19 +4,28 @@ export const useRecipes = create(devtools((set, get) => ({
   recipes: [],
   errors: null,
   slectRecipes: [],
-  getAllBeers: async (page = 1) => {
+  amountPages: 1,
+  getAllBeers: async () => {
     try {
+      const page = get().amountPages;
+      const recipes = get().recipes;
       const response = await fetch(
         `https://api.punkapi.com/v2/beers?page=${page}`
       );
       if (!response.ok) throw new Error("Something went wrong");
       const data = await response.json();
-      set({ recipes: data, errors: null });
+      set({ recipes: [...recipes, ...data], errors: null });
     } catch (error) {
       set({ errors: error.message });
     }
   },
   deleteRecipe: (filteredRecipes) => {
     set({recipes: filteredRecipes})
+  },
+  incAmountPage: () => {
+    const currentPage = get().amountPages;
+    const getAllBeers = get().getAllBeers;
+    set({amountPages: currentPage + 1});
+    getAllBeers();
   }
 })));
