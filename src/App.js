@@ -7,11 +7,11 @@ import Main from "./pages/Main/Main";
 import Recipe from './pages/Recipe/Recipe';
 
 function App() {
-  const { recipes, getAllBeers, deleteRecipe, incAmountPage } = useRecipes(
+  const { recipes, getRecipes, deleteRecipe, incAmountPage } = useRecipes(
     (state) => ({
       recipes: state.recipes,
       amountPages: state.amountPages,
-      getAllBeers: state.getAllBeers,
+      getRecipes: state.getRecipes,
       deleteRecipe: state.deleteRecipe,
       incAmountPage: state.incAmountPage
     }),
@@ -19,7 +19,7 @@ function App() {
   );
 
   useEffect(() => {
-    getAllBeers();
+    getRecipes();
   }, []);
 
   useEffect(() => {
