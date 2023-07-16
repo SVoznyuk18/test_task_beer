@@ -1,8 +1,9 @@
 import { create } from "zustand";
 import {devtools} from 'zustand/middleware'
-export const useRecipes = create(devtools((set) => ({
-  beers: [],
+export const useRecipes = create(devtools((set, get) => ({
+  recipes: [],
   errors: null,
+  slectRecipes: [],
   getAllBeers: async (page = 1) => {
     try {
       const response = await fetch(
@@ -10,9 +11,12 @@ export const useRecipes = create(devtools((set) => ({
       );
       if (!response.ok) throw new Error("Something went wrong");
       const data = await response.json();
-      set({ beers: data, errors: null });
+      set({ recipes: data, errors: null });
     } catch (error) {
       set({ errors: error.message });
     }
+  },
+  deleteRecipe: (filteredRecipes) => {
+    set({recipes: filteredRecipes})
   }
 })));
