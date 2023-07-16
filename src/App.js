@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import { shallow } from "zustand/shallow";
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
 import { useRecipes } from "./store";
 import './App.css';
 
 import Main from "./Main";
-
+import Recipe from './Recipe';
 
 function App() {
   const { recipes, getAllBeers, deleteRecipe, incAmountPage } = useRecipes(
@@ -31,8 +32,15 @@ function App() {
   }, [recipes]);
 
   return (
-    <div className="App">
-      <Main recipes={recipes} deleteRecipe={deleteRecipe}/>
+    <div className="main">
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Main recipes={recipes} deleteRecipe={deleteRecipe}/>}/>
+          <Route path="/recipe/:id" element={<Recipe recipes={recipes}/>}/>
+        </Routes>
+      </BrowserRouter>
+      
+      
     </div>
   );
 }

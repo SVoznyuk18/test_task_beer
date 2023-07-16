@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { Link } from 'react-router-dom';
 import Button from "./Button";
 const Main = ({recipes, deleteRecipe}) => {
 
@@ -28,25 +29,28 @@ const Main = ({recipes, deleteRecipe}) => {
   const filteredRecipes = recipes.slice(0, 15);
 
   return (
-    <main>
+    <>
       <Button onClick={() => hanndleDelete(recipes, selectedRecipes)} isShow={!!selectedRecipes.length}/>
       <ul className="recipesList">
         {
           filteredRecipes && filteredRecipes.map((recipe) => (
-            <li 
-              className={`recipeCard ${selectedRecipes.includes(recipe?.id) ? 'recipeCard_active' : ''}`}
-              key={recipe?.id} 
-              onContextMenu={(e) => handleRightClick(e, recipe?.id)}
-            >
-              <p>{recipe?.id}</p>
-              <p>{recipe?.name}</p>
-              <p>{recipe?.tagline}</p>
-              <p>{recipe?.description}</p>
-            </li>
+            <Link key={recipe?.id} to={`/recipe/${recipe.id}`}>
+              <li 
+                className={`recipeCard ${selectedRecipes.includes(recipe?.id) ? 'recipeCard_active' : ''}`}
+                
+                onContextMenu={(e) => handleRightClick(e, recipe?.id)}
+              >
+                <p>{recipe?.id}</p>
+                <p>{recipe?.name}</p>
+                <p>{recipe?.tagline}</p>
+                <p>{recipe?.description}</p>
+              </li>
+            </Link>
+           
           ))
         }
       </ul>
-    </main>
+    </>
   )
 }
 
