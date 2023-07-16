@@ -8,16 +8,15 @@ import Main from "./Main";
 
 
 function App() {
-  const { beers, getAllBeers } = useRecipes(
+  const { recipes, getAllBeers, deleteRecipe } = useRecipes(
     (state) => ({
-      beers: state.beers,
+      recipes: state.recipes,
       // errors: state.errors,
-      getAllBeers: state.getAllBeers
+      getAllBeers: state.getAllBeers,
+      deleteRecipe: state.deleteRecipe
     }),
     shallow
   );
-
-  console.log("beers", beers);
 
   useEffect(() => {
     getAllBeers();
@@ -26,7 +25,7 @@ function App() {
 
   return (
     <div className="App">
-      <Main beers={beers}/>
+      <Main recipes={recipes} deleteRecipe={deleteRecipe}/>
     </div>
   );
 }

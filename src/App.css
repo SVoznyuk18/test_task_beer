@@ -38,6 +38,10 @@
   }
 }
 
+main {
+  padding: 100px 0;
+}
+
 .recipesList {
   display: flex;
   flex-direction: column;
@@ -51,12 +55,31 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   background-color: rgba(89, 130, 52, 0.5);
   border-radius: 10px;
   cursor: pointer;
 }
 
-.recipeCard:active {
+.recipeCard_active {
+  background-color: rgba(89, 130, 52, 1);
+}
+
+button {
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  width: 120px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(89, 130, 52, 0.5);
+}
+
+button:hover {
   background-color: rgba(89, 130, 52, 1);
 }
