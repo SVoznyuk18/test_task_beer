@@ -2,36 +2,37 @@ import React, {useState} from "react";
 import Button from "./Button";
 const Main = ({recipes, deleteRecipe}) => {
 
-  const [selectRecipes, setSelectRecipes] = useState([]);
+  const [selectedRecipes, setSelectedRecipes] = useState([]);
 
   const handleRightClick = (e, id) => {
     e.preventDefault();
     if (e.button === 2) {
-      if(!selectRecipes.includes(id)) {
-        setSelectRecipes(prev => [...prev, id]);
+      if(!selectedRecipes.includes(id)) {
+        setSelectedRecipes(prev => [...prev, id]);
       } else {
-        setSelectRecipes(prev => prev.filter(selectId => selectId !== id));
+        setSelectedRecipes(prev => prev.filter(selectId => selectId !== id));
       }
     }
   }
 
-  const hanndleDelete = (recipes, selectRecipes) => {
+  const hanndleDelete = (recipes, selectedRecipes) => {
     const filteredRecipes = recipes.filter((recipe) => {
-      if (!selectRecipes.includes(recipe?.id)) return true;
+      if (!selectedRecipes.includes(recipe?.id)) return true;
       return false;
     });
 
     deleteRecipe(filteredRecipes);
+    setSelectedRecipes([]);
   }
 
   return (
     <main>
-      <Button onClick={() => hanndleDelete(recipes, selectRecipes)}/>
+      <Button onClick={() => hanndleDelete(recipes, selectedRecipes)} isShow={!!selectedRecipes.length}/>
       <ul className="recipesList">
         {
           recipes && recipes.map((recipe) => (
             <li 
-              className={`recipeCard ${selectRecipes.includes(recipe?.id) && 'recipeCard_active'}`}
+              className={`recipeCard ${selectedRecipes.includes(recipe?.id) ? 'recipeCard_active' : ''}`}
               key={recipe?.id} 
               onContextMenu={(e) => handleRightClick(e, recipe?.id)}
             >

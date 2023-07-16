@@ -65,13 +65,13 @@ main {
   background-color: rgba(89, 130, 52, 1);
 }
 
-button {
+.button {
+  display: none;
   position: fixed;
   top: 50px;
   right: 50px;
   width: 120px;
   height: 40px;
-  display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
@@ -79,6 +79,11 @@ button {
   cursor: pointer;
   background-color: rgba(89, 130, 52, 0.5);
 }
+
+.button_show {
+  display: flex;
+}
+
 
 button:hover {
   background-color: rgba(89, 130, 52, 1);

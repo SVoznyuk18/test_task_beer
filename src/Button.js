@@ -1,8 +1,13 @@
 import React from "react";
 
-const Button = ({handleClick, onClick}) => {
+const Button = ({handleClick, onClick, isShow}) => {
+
     return (
-        <button className="button" onContextMenu={handleClick} onClick={onClick}>
+        <button 
+            className={`button ${isShow ? 'button_show' : ''}`} 
+            onContextMenu={handleClick} 
+            onClick={onClick}
+        >
             Delete
         </button>
     )
