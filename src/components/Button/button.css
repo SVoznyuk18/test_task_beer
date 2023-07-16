@@ -1,0 +1,22 @@
+.button {
+  display: none;
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  width: 120px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(89, 130, 52, 0.5);
+}
+
+.button_show {
+  display: flex;
+}
+
+button:hover {
+  background-color: rgba(89, 130, 52, 1);
+}

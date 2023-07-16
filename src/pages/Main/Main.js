@@ -1,6 +1,10 @@
 import React, {useState} from "react";
 import { Link } from 'react-router-dom';
-import Button from "./Button";
+
+import './main.css';
+import Button from '../../components/Button/Button'
+import RecipeCard from "../../components/RecipeCard/RecipeCard";
+
 const Main = ({recipes, deleteRecipe}) => {
 
   const [selectedRecipes, setSelectedRecipes] = useState([]);
@@ -35,18 +39,8 @@ const Main = ({recipes, deleteRecipe}) => {
         {
           filteredRecipes && filteredRecipes.map((recipe) => (
             <Link key={recipe?.id} to={`/recipe/${recipe.id}`}>
-              <li 
-                className={`recipeCard ${selectedRecipes.includes(recipe?.id) ? 'recipeCard_active' : ''}`}
-                
-                onContextMenu={(e) => handleRightClick(e, recipe?.id)}
-              >
-                <p>{recipe?.id}</p>
-                <p>{recipe?.name}</p>
-                <p>{recipe?.tagline}</p>
-                <p>{recipe?.description}</p>
-              </li>
+              <RecipeCard recipe={recipe} selectedRecipes={selectedRecipes} handleRightClick={handleRightClick}/>
             </Link>
-           
           ))
         }
       </ul>
