@@ -38,8 +38,9 @@
   }
 }
 
-main {
-  padding: 100px 0;
+.main {
+  margin: 0 auto;
+  padding: 100px;
 }
 
 .recipesList {
@@ -55,10 +56,15 @@ main {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
   background-color: rgba(89, 130, 52, 0.5);
   border-radius: 10px;
   cursor: pointer;
+}
+
+.recipesList a {
+  text-decoration: none;
+  color: black;
 }
 
 .recipeCard_active {
@@ -87,4 +93,17 @@ main {
 
 button:hover {
   background-color: rgba(89, 130, 52, 1);
+}
+
+.recipe {
+  margin: 0 auto;
+  width: 800px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background-color: rgba(89, 130, 52, 0.5);
+  border-radius: 10px;
+
 }
