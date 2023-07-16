@@ -4,6 +4,8 @@ import { shallow } from "zustand/shallow";
 import { useRecipes } from "./store";
 import './App.css';
 
+import Main from "./Main";
+
 
 function App() {
   const { beers, getAllBeers } = useRecipes(
@@ -24,7 +26,7 @@ function App() {
 
   return (
     <div className="App">
-  
+      <Main beers={beers}/>
     </div>
   );
 }
