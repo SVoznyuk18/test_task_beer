@@ -5,7 +5,7 @@ export const useRecipes = create(devtools((set, get) => ({
   errors: null,
   slectRecipes: [],
   amountPages: 1,
-  getAllBeers: async () => {
+  getRecipes: async () => {
     try {
       const page = get().amountPages;
       const recipes = get().recipes;
@@ -24,8 +24,8 @@ export const useRecipes = create(devtools((set, get) => ({
   },
   incAmountPage: () => {
     const currentPage = get().amountPages;
-    const getAllBeers = get().getAllBeers;
+    const getRecipes = get().getRecipes;
     set({amountPages: currentPage + 1});
-    getAllBeers();
+    getRecipes();
   }
 })));
