@@ -32,7 +32,31 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.recipesList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.recipeCard {
+  width: 500px;
+  min-height: 300px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(89, 130, 52, 0.5);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.recipeCard:active {
+  background-color: rgba(89, 130, 52, 1);
 }
