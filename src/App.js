@@ -8,20 +8,27 @@ import Main from "./Main";
 
 
 function App() {
-  const { recipes, getAllBeers, deleteRecipe } = useRecipes(
+  const { recipes, getAllBeers, deleteRecipe, incAmountPage } = useRecipes(
     (state) => ({
       recipes: state.recipes,
       // errors: state.errors,
+      amountPages: state.amountPages,
       getAllBeers: state.getAllBeers,
-      deleteRecipe: state.deleteRecipe
+      deleteRecipe: state.deleteRecipe,
+      incAmountPage: state.incAmountPage
     }),
     shallow
   );
 
   useEffect(() => {
     getAllBeers();
-  }, [getAllBeers]);
+  }, []);
 
+  useEffect(() => {
+    if (recipes.length !== 0 && recipes.length < 15) {
+      incAmountPage();
+    }
+  }, [recipes]);
 
   return (
     <div className="App">
